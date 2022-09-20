@@ -10,4 +10,8 @@ class Cryptocurrency(
   var coinId: Int = -1,
   var symbol: String = "",
   var price: Double = .0
-)
+) {
+  override fun toString(): String {
+    return "Cryptocurrency(id=$id, coinId=$coinId, symbol='$symbol', price=$price)"
+  }
+}
