@@ -1,10 +1,9 @@
 package by.korzun.cryptocurrencywatcherkotlin.cryptocurrency.dto
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 data class CoinLoreDTO(
   val symbol: String,
-  val price_usd: Double
-) {
-  override fun toString(): String {
-    return "CoinLoreDTO(symbol='$symbol', price=$price_usd)"
-  }
-}
+  @JsonProperty("price_usd")
+  val priceUSD: Double
+)

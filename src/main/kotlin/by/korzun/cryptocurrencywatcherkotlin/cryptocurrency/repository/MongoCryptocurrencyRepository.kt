@@ -14,7 +14,6 @@ interface MongoCryptocurrencyRepository
 
   fun getCryptocurrencyByCoinId(id: Int): Mono<Cryptocurrency>
   fun getCryptocurrencyBySymbol(symbol: String): Mono<Cryptocurrency>
-
   @Query(value = "{}", fields = "{coinId: 1, _id: 0}")
   fun getAllCoinIds(): Flux<CoinIDDTO>
 }

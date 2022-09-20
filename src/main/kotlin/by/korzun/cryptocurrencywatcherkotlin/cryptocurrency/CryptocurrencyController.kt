@@ -15,7 +15,8 @@ class CryptocurrencyController(
 ) {
 
   @GetMapping("/{id}")
-  fun getCryptocurrencyByCoinId(@PathVariable id: Int) = cryptocurrencyService.getCryptocurrencyByCoinId(id)
+  fun getCryptocurrencyByCoinId(@PathVariable id: Int) =
+    cryptocurrencyService.getCryptocurrencyByCoinId(id)
 
   @PostMapping
   fun saveNewCryptocurrency(@RequestParam symbol: String, @RequestParam id: Int) =
