@@ -1,5 +1,5 @@
 package by.korzun.cryptocurrencywatcherkotlin.cryptocurrency.dto
 
-data class CoinIDDto(
+data class CoinIDDTO(
   val coinId: Int
 )
