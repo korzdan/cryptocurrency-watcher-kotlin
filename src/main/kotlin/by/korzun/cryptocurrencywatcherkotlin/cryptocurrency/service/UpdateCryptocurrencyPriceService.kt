@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
+import reactor.core.scheduler.Schedulers
 
 @Service
 class UpdateCryptocurrencyPriceService(
@@ -20,14 +21,16 @@ class UpdateCryptocurrencyPriceService(
   @Async
   @Scheduled(fixedRate = 10000)
   fun updateCryptocurrencyPrices() {
-    appendCoinIDsToURL().subscribe { url ->
-      WebClient
-        .create(url)
-        .get()
-        .retrieve()
-        .bodyToFlux(CoinLoreDTO::class.java).flatMap { coinLoreDTO -> updateCryptocurrencyBySymbol(coinLoreDTO) }
-        .subscribe()
-    }
+    appendCoinIDsToURL()
+      .subscribeOn(Schedulers.boundedElastic())
+      .subscribe { url ->
+        WebClient
+          .create(url)
+          .get()
+          .retrieve()
+          .bodyToFlux(CoinLoreDTO::class.java).flatMap { coinLoreDTO -> updateCryptocurrencyBySymbol(coinLoreDTO) }
+          .subscribe()
+      }
   }
 
   private fun updateCryptocurrencyBySymbol(coinLoreDto: CoinLoreDTO): Mono<Cryptocurrency> {
@@ -52,7 +55,9 @@ class UpdateCryptocurrencyPriceService(
   }
 
   private fun getFluxOfCoinIDs(): Flux<Int> {
-    val fluxOfCoinIDDTOs = cryptocurrencyRepository.getAllCoinIds()
+    val fluxOfCoinIDDTOs = cryptocurrencyRepository
+      .getAllCoinIds()
+      .publishOn(Schedulers.boundedElastic())
     return fluxOfCoinIDDTOs.map { coinIdDto -> coinIdDto.coinId }
   }
 }
