@@ -1,0 +1,21 @@
+type Cryptocurrency {
+    id: ID,
+    coinId: Int,
+    symbol: String,
+    price: Float
+}
+
+input CryptocurrencyInput {
+    coinId: Int,
+    symbol: String
+}
+
+type Query {
+    cryptocurrencies: [Cryptocurrency]
+    cryptocurrencyByCoinId(coinId: Int): Cryptocurrency
+}
+
+type Mutation {
+    createCryptocurrency(symbol: String, coinId: Int): Cryptocurrency
+}
+

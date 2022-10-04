@@ -23,6 +23,9 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+	implementation("com.graphql-java:graphql-java-tools:5.2.4")
+	implementation("org.springframework.boot:spring-boot-starter-graphql")
+	implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:14.0.0")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 }
