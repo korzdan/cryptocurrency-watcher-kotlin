@@ -12,3 +12,7 @@ spring:
     graphiql:
       path: /graphiql
       enabled: true
+
+bot:
+  name: CryptocurrencyWatcherBot
+  token: 5455319301:AAHjNcR1gvBZULYC7eTdL0RDTCHqQJts_cE

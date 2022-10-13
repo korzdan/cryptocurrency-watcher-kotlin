@@ -22,4 +22,8 @@ class MongoCryptocurrencyService(
   override fun registerNewCryptocurrency(id: Int, symbol: String): Mono<Cryptocurrency> {
     return cryptocurrencyRepository.save(Cryptocurrency(coinId = id, symbol = symbol))
   }
+
+  override fun getCryptocurrencyBySymbol(symbol: String): Mono<Cryptocurrency> {
+    return cryptocurrencyRepository.getCryptocurrencyBySymbol(symbol)
+  }
 }

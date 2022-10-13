@@ -9,4 +9,6 @@ interface CryptocurrencyService {
   fun getCryptocurrencyByCoinId(id: Int): Mono<Cryptocurrency>
 
   fun registerNewCryptocurrency(id: Int, symbol: String): Mono<Cryptocurrency>
+
+  fun getCryptocurrencyBySymbol(symbol: String): Mono<Cryptocurrency>
 }

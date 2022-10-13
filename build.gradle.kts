@@ -26,6 +26,7 @@ dependencies {
 	implementation("com.graphql-java:graphql-java-tools:5.2.4")
 	implementation("org.springframework.boot:spring-boot-starter-graphql")
 	implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:14.0.0")
+	implementation("org.telegram:telegrambots:6.1.0")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 }
